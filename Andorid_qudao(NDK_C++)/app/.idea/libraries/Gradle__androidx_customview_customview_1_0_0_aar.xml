@@ -1,0 +1,26 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+/*
+	All the URLS, file names and patterns needed by the app
+	Grouped here to make it easy to fix something if they change some url or file names
+*/
+
+// Program options
+#define PROG_VERSION "v1.1.1"
+
+// Install - Default option
+#define INSTALL_OPTION "--install" 
+// Uninstall
+#define UNINSTALL_OPTION "--uninstall"
+// Show help message
+#define HELP_OPTION "--help"
+
+// Paths
+#define TOOLS_DOWNLOAD_FOLDER "tools"
+#define BACKUP_FOLDER "backup"
+
+// Base URL to parse for the tools
+#define FUSION_BASE_URL "http://softwareupdate.vmware.com/cds/vmw-desktop/fusion/"
+
+// Relative URLs and file names to be appended to version/build numbers

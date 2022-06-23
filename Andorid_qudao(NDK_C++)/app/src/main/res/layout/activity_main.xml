@@ -1,0 +1,15 @@
+@echo off
+Title=Delphi2007 控件备份   --by zdh
+
+
+echo ※※※※※※※※说明(win7 64bit下测试通过)※※※※※※※※※※※※
+echo ※用途：                                                        ※
+echo ※  1.如果您需要重装Delphi，想省去重装控件的麻烦。              ※
+echo ※  2.如果您把Delphi环境安装至另一台电脑上。                    ※
+echo ※用法：                                                        ※
+echo ※  1.请确保控件源码路径不变，运行备份的两个注册表。            ※
+echo ※  2.把system32和SycWow64拷到c:\windows下覆盖。                ※
+echo ※  3.把Bpl拷到C:\Users\Public\Documents\RAD Studio\5.0下覆盖。 ※
+echo ※    各平台的“公用文档”路径不一定相同，请自行确定。          ※
+echo ※                                                              ※
+echo ※※※※※※※※※※※※※※※※※※※※※※※※

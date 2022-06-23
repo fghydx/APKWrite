@@ -1,0 +1,4 @@
+ner.scanJars 至少有一个JAR被扫描用于TLD但尚未包含TLD。 为此记录器启用调试日志记录，以获取已扫描但未在其中找到TLD的完整JAR列表。 在扫描期间跳过不需要的JAR可以缩短启动时间和JSP编译时间。
+04-Jun-2020 11:50:21.158 信息 [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [F:\apache-tomcat-9.0.27\webapps\cuteinfoNew.war] has finished in [1,484] ms
+04-Jun-2020 11:50:21.174 信息 [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [F:\apache-tomcat-9.0.27\webapps\GDcCarrier.war]
+04-Jun-2020 11:50:21.283 信息 [main] org.apache.jasper.servlet.TldScanner.sc

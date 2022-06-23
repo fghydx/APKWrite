@@ -1,0 +1,42 @@
+#ifndef VERSIONPARSER_H
+#define VERSIONPARSER_H
+
+#include <string>
+#include <regex>
+#include <list>
+#include <sstream>
+
+#include "config.h"
+
+// Auxiliary class for version comparation
+class Version {
+public:
+	// Version parse exception
+	class VersionException : public std::exception
+	{
+	public:
+		explicit VersionException(const char* message) :
+			msg_(message)
+		{
+		}
+		explicit VersionException(const std::string& message) :
+			msg_(message)
+		{}
+		virtual ~VersionException() throw () {}
+		virtual const char* what() const throw () {
+			return msg_.c_str();
+		}
+
+	protected:
+		std::string msg_;
+	};
+
+	enum VersionNumberType {
+		MAJOR,
+		MINOR,
+		REVISION
+	};
+
+	Version(std::string version)
+		: version(version)
+	{

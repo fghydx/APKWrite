@@ -1,0 +1,33 @@
+#ifndef SERVICESTOPUTILS_H
+#define SERVICESTOPUTILS_H
+
+#include <string>
+#include <stdarg.h>
+
+#ifdef _WIN32
+#include "Windows.h"
+#else
+typedef int SC_HANDLE; // dummy typename for non windows systems
+#endif
+
+class ServiceStopper
+{
+public:
+	class ServiceStopException : public std::exception
+	{
+	public:
+		ServiceStopException(const char* msg, ...) { 
+			char formatted[512];
+			va_list args;
+			va_start(args, msg);
+			sprintf(formatted, msg, args);
+			va_end(args);
+			sprintf(message, "Error: %s", formatted); 
+		}
+		const char* what() const noexcept { return message; }
+	private:
+		char message[1024];
+	};
+
+	// TODO: check if linux needs these functions and if so reimplement them
+	//		 or alternatively wrap them in ifd

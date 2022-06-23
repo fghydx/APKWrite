@@ -1,0 +1,49 @@
+#include "patchutils.h"
+
+// Settings for memory and IO related stuff
+#define FREAD_BUF_SIZE 2048 // 2 kB
+
+// Flags needed for ELF parsing
+#define E_CLASS64 2
+#define E_SHT_RELA 4
+
+// Capital letters range from 0x41 to 0x5A
+// other letters from 0x61 to 0x7A
+// total is 26 -- double of 13
+
+std::string Patcher::rot13(const std::string& in)
+{
+	std::string out;
+	for (char c : in)
+	{
+		if (c >= 0x41 && c <= 0x5A)
+		{
+			// CAPITAL LETTER
+			out += (((c - 0x41) + 13) % 26) + 0x41;
+		}
+		else if (c >= 0x61 && c <= 0x7A)
+		{
+			// NON CAPITAL LETTER
+			out += (((c - 0x61) + 13) % 26) + 0x61;
+		}
+		else
+		{
+			// NUMBER/SYMBOL/OTHER STUFF
+			out += c;
+		}
+	}
+	return out;
+}
+
+std::vector<char> Patcher::makeVector(const char* arr, size_t size)
+{
+	return std::vector<char>(arr, arr+size);
+}
+
+bool Patcher::cmpcarr(const char* c1, const char* c2, size_t len)
+{
+	return std::equal(c1, c1+len, c2);
+}
+
+// Different implementations for reusing the same memory stream
+std::optional<un

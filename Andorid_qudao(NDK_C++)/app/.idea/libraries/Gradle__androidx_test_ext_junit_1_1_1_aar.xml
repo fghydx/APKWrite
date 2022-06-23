@@ -1,0 +1,35 @@
+#include "servicestoputils.h"
+
+#ifdef _WIN32
+#include <process.h>
+#include <Tlhelp32.h>
+#include <winbase.h>
+#endif
+
+void ServiceStopper::StopService_s(std::string serviceName)
+{
+#ifdef _WIN32
+	SERVICE_STATUS_PROCESS ssp;
+	ULONGLONG dwStartTime = GetTickCount64();
+	DWORD dwBytesNeeded;
+	ULONGLONG dwTimeout = 10000; // 30-second time-out
+	DWORD dwWaitTime;
+
+	// Get a handle to the SCM database. 
+
+	SC_HANDLE schSCManager = OpenSCManager(
+		NULL,                    // local computer
+		NULL,                    // ServicesActive database 
+		SC_MANAGER_ALL_ACCESS);  // full access rights 
+
+	if (NULL == schSCManager)
+	{
+		throw ServiceStopException("OpenSCManager failed (%d)", GetLastError());
+		return;
+	}
+
+	// Get a handle to the service.
+
+	SC_HANDLE schService = OpenService(
+		schSCManager,         // SCM database 
+		serviceName.c_str(),  

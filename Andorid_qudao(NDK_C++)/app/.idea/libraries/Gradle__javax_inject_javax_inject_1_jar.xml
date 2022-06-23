@@ -1,0 +1,14 @@
+/************************************************************************************************
+	Unlocker - Patcher + Tools Downloader
+	Created by Paolo Infante
+
+	Based on "Unlocker" by DrDonk for a native solution to python errors and 
+	virus warnings.
+
+	I coded from scratch all the patch routines (I tried to be consistent with C++ library usage
+	though you'll probably find a few memcpy here and there...) and tools download (using 
+	libcurl for download and libarchive to uncompress the archives)
+
+	Should be cross-platform. Tested on Windows, I'm planning to test it on linux too
+	I tried my best to use STL whenever possible. I had to use external libraries:
+	libcurl, libarchive and zlib that I'm sure can be comp
